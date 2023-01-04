@@ -1,0 +1,5 @@
+nome = input('Digite seu nome: ')
+print(nome)
+nometratado = nome.replace(" ","")
+print('O números de letras é: ',len(nometratado))
+print('A ultima letra do seu nome é:',nometratado[-1])
