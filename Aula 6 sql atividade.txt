@@ -1,0 +1,48 @@
+CREATE DATABASE "Escola"
+
+
+
+ CREATE TABLE "Alunos"(
+        "ID_Matricula" int GENERATED AWAYS AS IDENTITY,
+        "Nro_Matricula" int GENERATED AWAYS AS IDENTITY
+        "Cpf" char(11) NOT NULL,
+        "Nome" varchar(255) NOT NULL,
+        "Endereço" varchar(255),
+        "Telefone" char(11),
+        "Ano_Nascimento" char(4),
+        PRIMARY KEY("ID_Matricula"),
+        FARAIGN KEY("Nro_Matricula")
+    );
+
+
+
+
+CREATE TABLE "Disciplina"(
+        "ID_Disciplina" int GENERATED AWAYS AS IDENTITY
+        "Cod_Disciplina" int GENERATED AWAYS AS IDENTITY,
+        "Nome" varchar(255) NOT NULL,
+        "Cod_Curso" int,
+        PRIMARY KEY("ID_Disciplina"),
+        FORAIGN KEY("Cod_Disciplina")
+    );
+
+
+
+
+CREATE TABLE "Matricula"(
+        "ID_Matricula" int GENERATED AWAYS AS IDENTITY
+        "Nro_Matricula" int,
+        "Cod_Disciplina" int,
+        "Semestre" int,
+        "Ano" char(4),
+        "Nota" number,
+        "Nro_Faltas" int,
+        CONSTRAINT fk_alunos
+            FOREIGN KEY("Nro_Matricula")
+            REFERENCES "Alunos"("Nro_Matricula")
+        CONSTRAINT fk_Disciplina
+            FOREIGN KEY("Cod_Disciplina")
+            REFERENCES "Disciplina"("Cod_Disciplina")
+        ON DELETE CASCADE
+        ,
+    );
